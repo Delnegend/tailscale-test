@@ -2,6 +2,12 @@ name: Ping from US to VN
 
 on:
   workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of ping packets to send'
+        required: false
+        default: '100'
+        type: string
 
 jobs:
     ping:
@@ -16,4 +22,4 @@ jobs:
               use-cache: 'true'
           - name: Ping
             run: |
-              ping -c 20 dngndsrv
+              ping -c ${{ inputs.count }} dngndsrv
