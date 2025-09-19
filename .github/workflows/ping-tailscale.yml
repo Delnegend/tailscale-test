@@ -1,4 +1,4 @@
-name: Ping from US to VN
+name: Ping from US to VN via Tailscale
 
 on:
   workflow_dispatch:
@@ -7,6 +7,11 @@ on:
         description: 'Number of ping packets to send'
         required: false
         default: '100'
+        type: string
+      destination:
+        description: 'Destination hostname or IP address'
+        required: false
+        default: 'dngndsrv'
         type: string
 
 jobs:
@@ -22,4 +27,4 @@ jobs:
               use-cache: 'true'
           - name: Ping
             run: |
-              ping -c ${{ inputs.count }} dngndsrv
+              ping -c ${{ inputs.count }} ${{ inputs.destination }}

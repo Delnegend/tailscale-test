@@ -1,0 +1,23 @@
+name: Ping from US to VN via Internet
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of ping packets to send'
+        required: false
+        default: '100'
+        type: string
+      destination:
+        description: 'Destination hostname or IP address'
+        required: false
+        default: 'google.com'
+        type: string
+
+jobs:
+    ping:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Ping
+            run: |
+              ping -c ${{ inputs.count }} ${{ inputs.destination }}
