@@ -16,4 +16,4 @@ jobs:
               use-cache: 'true'
           - name: Ping
             run: |
-              ping -c 20 ts.delnegend.com
+              ping -c 20 100.122.244.15
